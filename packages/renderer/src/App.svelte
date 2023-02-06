@@ -43,6 +43,8 @@ router.subscribe(function (navigation) {
   if (navigation.from !== undefined && !navigation.from.startsWith('/preferences')) {
     nonSettingsPage = navigation.from;
   }
+
+  window.pageOpened(navigation.url);
 });
 
 let providers: ProviderInfo[] = [];

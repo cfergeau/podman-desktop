@@ -1016,6 +1016,10 @@ function initExposure(): void {
     return ipcInvoke('feedback:send', feedback);
   });
 
+  contextBridge.exposeInMainWorld('pageOpened', async (url: string): Promise<void> => {
+    return ipcInvoke('telemetry:pageOpened', url);
+  });
+
   let onDataCallbacksShellInContainerExtensionInstallId = 0;
   const onDataCallbacksShellInContainerExtension = new Map<number, (data: string) => void>();
   const onDataCallbacksShellInContainerExtensionError = new Map<number, (data: string) => void>();

@@ -1024,6 +1024,10 @@ export class PluginSystem {
       return telemetry.sendFeedback(feedbackProperties);
     });
 
+    this.ipcHandle('telemetry:pageOpened', async (_listener, url: string): Promise<void> => {
+      return telemetry.track('pageOpened', { url: url });
+    });
+
     const dockerDesktopInstallation = new DockerDesktopInstallation(
       apiSender,
       containerProviderRegistry,
